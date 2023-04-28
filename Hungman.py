@@ -1,6 +1,8 @@
+# Import builtin packages
 import subprocess
 import random
 import sys
+# Trying to import nltk package or install it if it's not
 try:
     import nltk
     from nltk.corpus import words
@@ -10,6 +12,7 @@ except ModuleNotFoundError as e:
     print(f"The '{missing_package}' package is not installed. Installing now...\n!!!!! You may have to restart your code editor after installing the package!!!!!")
     subprocess.call(['pip', 'install', missing_package])
 
+# Download words corpus if needed
 def download_words_corpus():
     try:
         words.words()
