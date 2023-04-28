@@ -5,20 +5,17 @@ import sys
 # Trying to import nltk package or install it if it's not
 try:
     import nltk
-    from nltk.corpus import words
 except ModuleNotFoundError as e:
     # Handle missing package error here, such as installing the package
     missing_package = str(e).split("'")[1]
     print(f"The '{missing_package}' package is not installed. Installing now...\n!!!!! You may have to restart your code editor after installing the package!!!!!")
     subprocess.call(['pip', 'install', missing_package])
+from nltk.corpus import words
 
 # Download words corpus if needed
 def download_words_corpus():
     try:
         words.words()
-    except NameError:
-        print("!!!!! You have to ReRun your Code !!!!!")
-        sys.exit()
     except LookupError:
         nltk.download('words')
 
@@ -42,7 +39,6 @@ def play_game():
 
     # Print the user's chances to try and shuffled word
     print(f"Your Chances: {tries_left} tries")
-    print(word)
     print(f"Shuffled Word: {shuffled_word}")
 
     while tries_left > 0:
